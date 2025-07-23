@@ -4,6 +4,22 @@ const arrSatuan = ['', 'ribu', 'juta', 'milyar', 'triliun', 'quadriliun', 'quint
 
 // toTerbilang Function
 function toTerbilang(strAngka) {
+  strAngka = String(strAngka)
+  angkaArr = strAngka.split('.', strAngka)
+
+  strA = ''
+  for (let i=0;i<angkaArr.length;++i) {
+    if (i === 1) {
+      strA += ', ' + terbilang(angkaArr[i]) + ' sen' 
+    } else {
+      strA += terbilang(angkaArr[i])
+    }
+  }
+
+  return strA.trim()
+}
+
+function terbilang(strAngka) {
   // Jika Inputan Bukan Angka Maka Return Error
   if (isNaN(strAngka)) {
     return 'Error, input is not a valid number!'
